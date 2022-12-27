@@ -1,0 +1,4 @@
+terraform init
+terraform apply
+terraform destory (instead remove code from terraform file and run command "terraform apply")
+    terraform destory -target aws_subnet.dev-subnet-2
