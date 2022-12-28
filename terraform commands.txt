@@ -22,3 +22,18 @@ terraform state
     terraform state push (update remote state from a local state file)
     terraform state replace-provider (replace provider in the state)
     terraform state rm (remove instances from the state)
+
+// add AWS credential by commond line
+export AWS_SECRET_ACCESS_KEY=secret_key
+export AWS_ACCESS_KEY_IS=access_key
+export AWS_DEFAULT_REGION="us-west-2"
+
+// get AWS credential which were set by command line in terminal
+env | grep AWS
+
+// set AWS credential in our operating system (first install AWS cli to run command one)
+    aws configure
+    now add access_key, secret_key and region value and set it globally in your system
+
+// add custom environment variable through command line interface (use varaible name in file after the text "TF_VAR_")
+    export TF_VAR_avail_zone="eu-west-3a"
