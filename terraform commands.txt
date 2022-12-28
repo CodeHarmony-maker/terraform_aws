@@ -1,4 +1,24 @@
-terraform init
-terraform apply
-terraform destory (instead remove code from terraform file and run command "terraform apply")
-    terraform destory -target aws_subnet.dev-subnet-2
+// init
+terraform init (install provider you used like: aws, kubernetes, Jenkins)
+
+// apply
+terraform apply (apply all changes in terraform file)
+    terraform apply -auto-approve (apply changes without your confirmation immediately )
+    terraform apply -var-file terraform-dev.tfvars (apply changes with different environment variables file like dev, sage and prod)
+
+// destory
+terraform destroy (destory complete infrastructure of terraform file, remove resourcses one by one in order)
+    terraform destroy -target aws_subnet.dev-subnet-2 (instead using this command, remove code from terraform file and run command "terraform apply")
+
+// plan
+terraform plan (check difference between current state and desired state)
+
+// state
+terraform state
+    terraform state list (list of resources in the state)
+    terraform state show aws_subnet.dev-subnet-1 (show specific resource)
+    terraform state mv (move an item in the state)
+    terraform state pull (pull current state and output to stdout)
+    terraform state push (update remote state from a local state file)
+    terraform state replace-provider (replace provider in the state)
+    terraform state rm (remove instances from the state)

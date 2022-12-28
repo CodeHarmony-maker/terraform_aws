@@ -4,8 +4,20 @@ provider "aws" {
     secret_key = ""
 }
 
-resource "aws_vpc" "development-vpc" {
-    cidr_block = "10.0.0.0/16"
+variable "subnet_cidr_block" {
+  description = "subnet_cidr_block"
+}
+
+variable "vpc_cidr_block" {
+  description = "vpc_cidr_block"
+}
+
+variable "environment" {
+    description = "deployment environment"
+}
+
+resource "aws_vpc" "development-vpc" { 
+    cidr_block = var.vpc_cidr_block
     tags = {
         Name: "development",
         vpc-env: "dev"
@@ -32,4 +44,13 @@ resource "aws_subnet" "dev-subnet-2" {
     tags = {
         Name: "subnet-2-defaults"
     }
+}
+
+output "dev-vpc-id" {
+    value = aws_vpc.development-vpc.id
+}
+
+
+output "dev-subnet-id" {
+    value = aws_subnet.dev-subnet-1.id
 }
